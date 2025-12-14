@@ -1,6 +1,11 @@
+"""This module contains functions to simulate particle movements on a graph,
+compute return times, and analyze node visit distributions. It includes utilities
+for running multiple simulations and plotting results. The main function contains 
+the solution to Exercise 2 of Homework 2."""
+
 from pathlib import Path
 from matplotlib import pyplot as plt
-from utils import create_ex2_graph, set_seed
+from utils import create_ex2_graph, progress_bar, set_seed
 import numpy as np
 from typing import List, Dict, Optional, Tuple
 
@@ -296,7 +301,11 @@ def plot_single_particle_standard_deviation(
     stds = []
     # Iterate over different numbers of iterations
     for n_iter in n_iterations:
-
+        progress_bar(
+            f"Simulating single particle std dev iterations={n_iter}",
+            n_iterations.index(n_iter) + 1,
+            len(n_iterations),
+        )
         # Simulate multiple runs for current number of iterations and collect average return times
         average_return_times = []
         for _ in range(samples):
@@ -349,6 +358,9 @@ def simulate_node_distributions_multiple_runs(
 
     # Run simulations and collect visit distributions
     for i in range(samples):
+        progress_bar(
+            f"Simulating node distributions run={i+1}/{samples}", i + 1, samples
+        )
         _, _, _, final_distribution = simulate_node_distributions(
             start_node, P_bar, nodes, mapping, rate, n_particles, max_time
         )

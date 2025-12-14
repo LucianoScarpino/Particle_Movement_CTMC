@@ -4,12 +4,14 @@ from numpy.random import choice
 import matplotlib.pyplot as plt
 from utils import save_image,simulate_FDG
 from scipy.stats import norm
+from pathlib import Path
 
 # --------------------------------------------------------------
 # ------ Creation and visualization of the graph ---------------
 # --------------------------------------------------------------
 
-path_ex1 = 'Homework_2/plots/Ex1'
+path_ex1 = Path(__file__).parent / 'plots/Ex1'
+path_ex1.mkdir(parents=True, exist_ok=True)
 visualization = False                           # Flag to visualize plots (if True)
 separator = '-' * 50
 
@@ -62,8 +64,8 @@ for u,v in G.edges():
             width=1.4
         )
 
-name = '/graph_ex_1'
-save_image(path_ex1 + name,visualization=visualization)
+name = 'graph_ex_1'
+save_image(path_ex1 / name,visualization=visualization)
 
 # --------------------------------------------------------------
 # ------------------ Simulation Setting ------------------------
@@ -116,8 +118,8 @@ plt.scatter(transition_times[:30], pos[:30], c=colors, s=80)
 plt.yticks([0,1,2,3,4], ['o','a','b','c','d'])
 plt.title("Trajectory for the first 30 jumps")
 
-name = '/trajectory'
-save_image(path_ex1 + name,visualization)
+name = 'trajectory'
+save_image(path_ex1 / name,visualization)
 
 
 # --------------------------------------------------------------
@@ -260,8 +262,8 @@ plt.autoscale(enable=True, axis='y', tight=True)
 print(f'Average opinion: {estimated_alpha}, reached after {it_to_converge} iteration')
 print(f'Mean variance: {np.mean(variances)}')
 
-name = '/average_opinion_and_variance'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'average_opinion_and_variance'
+save_image(path_ex1 / name, visualization=visualization)
 
 
 M = 1000                                # Number of Mote Carlo iterations
@@ -336,8 +338,8 @@ plt.title("Comparison between theoretical and empirical distribution of α")
 plt.legend(loc='best')
 plt.grid(True, linestyle='--', alpha=0.3)
 
-name = '/alpha_gaussians'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'alpha_gaussians'
+save_image(path_ex1 / name, visualization=visualization)
 
 print(f'Estimated variance of alpha = {est_var_alpha}')
 print(f'Gap from estimated alpha variance = {np.abs(var_alpha - est_var_alpha)}')
@@ -366,8 +368,8 @@ G_g.add_edge('d', 'd', weight=1.0)
 
 nx.draw(G_g, pos_init, with_labels=True, node_color='lightblue', node_size=1000, font_size=10, font_weight='bold', arrowsize=15)
 
-name = '/graph_point_g'
-save_image(path_ex1+name,visualization=visualization)
+name = 'graph_point_g'
+save_image(path_ex1 / name,visualization=visualization)
 
 LAMBDA_g = np.array(LAMBDA, dtype=float).copy()
 
@@ -431,8 +433,8 @@ plt.title('Evolution of components under modified graph $G_g$')
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.3)
 
-name = '/components_evolution_point_g'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'components_evolution_point_g'
+save_image(path_ex1 / name, visualization=visualization)
 
 
 # 2) Independency of limit value of x from its initial opinion
@@ -456,8 +458,8 @@ plt.ylabel(r'limit value $x_c(\infty)$')
 plt.title('Value of $c$ at equilibrium vs initialisation')
 plt.grid(True, linestyle='--', alpha=0.3)
 
-name = '/c_equilibrium_vs_initialisation_point_g'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'c_equilibrium_vs_initialisation_point_g'
+save_image(path_ex1 / name, visualization=visualization)
 
 
 x_bar0 = 3.0/8.0 * base_x0[0] + 1.0/4.0 * base_x0[1] + 3.0/8.0 * base_x0[2]
@@ -485,8 +487,8 @@ nx.draw(G_h, pos_init, with_labels=True,
         node_color='lightblue', node_size=1000,
         font_size=10, font_weight='bold', arrowsize=15)
 
-name = '/graph_point_h'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'graph_point_h'
+save_image(path_ex1 / name, visualization=visualization)
 
 LAMBDA_h = np.array(LAMBDA, dtype=float).copy()
 
@@ -526,8 +528,8 @@ plt.ylabel('mean')
 plt.title('Time Average under modified graph $G_h$')
 plt.grid(True, linestyle='--', alpha=0.3)
 
-name = '/time_average_point_h'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'time_average_point_h'
+save_image(path_ex1 / name, visualization=visualization)
 
 plt.figure(figsize=(8,4))
 
@@ -542,8 +544,8 @@ plt.title('States Equilibria')
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.3)
 
-name = '/states_equilibria_point_h'
-save_image(path_ex1 + name, visualization=visualization)
+name = 'states_equilibria_point_h'
+save_image(path_ex1 / name, visualization=visualization)
 
 print(separator)
 print()

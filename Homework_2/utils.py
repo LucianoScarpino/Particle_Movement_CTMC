@@ -119,11 +119,11 @@ def save_image(plot_dir,visualization=True):
 
 def simulate_FDG(n,n_states,P,x0):
     """ Perform FDG dybamics.
-        INPUTS:
-        n -> [int] number of iterations
-        n_states -> [int] number of states taking place in opinion dynamics
-        P -> [np.ndrray] stochastic matrix of transitional probabilities
-        x0 -> [np.array] array containing initial opinions
+    Args:
+        n (int): Number of iterations.
+        n_states (int): Number of states in the opinion dynamics.
+        P (np.ndarray): Stochastic matrix of transitional probabilities.
+        x0 (np.ndarray): Array containing initial opinions.
     """
 
     x_t = x0
