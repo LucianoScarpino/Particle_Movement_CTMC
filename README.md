@@ -68,7 +68,7 @@ pip install numpy networkx matplotlib scipy
 
 **Report:**
 
-The final PDF report is located at each related homework's root [Nocita_Report_HW2.pdf](./Nocita_Report_HW2.pdf)
+The final PDF report is located at each related homework's root [Scarpino_Report_HW2.pdf](./Scarpino_Report_HW2.pdf)
 
 It contains:
 
